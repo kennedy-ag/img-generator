@@ -1,6 +1,8 @@
 import numpy as np
+from validator import Validator
 
 class FilterApplier:
+
     @staticmethod
     def reset_channel(img: np.ndarray, channel: int):
         """
@@ -13,13 +15,16 @@ class FilterApplier:
                     1 = r'G'b\n
                     2 = rg'B'
         """
+        Validator.validate_image(img)
+        Validator.validate_channel(channel)
+
         for line in img: 
             for pixel in line: pixel[channel] = 0
     
     @staticmethod
     def fill_channel(img: np.ndarray, channel: int, value=100):
         """
-        Fill all the 'channel' of the image 'img' with the 'value'
+        Fills all the 'channel' of the image 'img' with the 'value'
 
             Parameters:
                 img (ndarray(x, y, 3)): the image-like array\n
@@ -29,5 +34,9 @@ class FilterApplier:
                     1 = r'G'b\n
                     2 = rg'B'
         """
+        Validator.validate_image(img)
+        Validator.validate_channel(channel)
+        Validator.validate_value_of_fill(value)
+
         for line in img: 
             for pixel in line: pixel[channel] = value
