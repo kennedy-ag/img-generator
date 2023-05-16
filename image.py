@@ -1,6 +1,6 @@
-from matplotlib import pyplot as plt
 import numpy as np
 import time
+import cv2
 
 class Image:
 
@@ -35,9 +35,7 @@ class Image:
         return img
     
     @staticmethod
-    def save(img: np.ndarray):
-        plt.savefig(f"images/{int(time.mktime(time.localtime()))}.png")
-
-    @staticmethod
-    def show(img: np.ndarray):
-        plt.imshow(img)
+    def save(img: np.ndarray) -> str:
+        img_name = f"images/{int(time.mktime(time.localtime()))}.png"
+        cv2.imwrite(img_name, img)
+        return img_name

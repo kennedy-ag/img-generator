@@ -1,4 +1,5 @@
 import numpy as np
+import cv2
 from validator import Validator
 
 class FilterApplier:
